@@ -45,7 +45,7 @@ class Place(BaseModel, Base):
             for review in storage.all(Review).values():
                 if review.place_id == self.id:
                     review_list.append(review)
-        
+
         @property
         def amenities(self):
             """Getter for amenities"""
