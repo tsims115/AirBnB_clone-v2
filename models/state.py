@@ -24,3 +24,15 @@ class State(BaseModel, Base):
                 if city.state_id == self.id:
                     city_list.append(city)
             return city_list
+
+    if getenv('HBNB_TYPE_STORAGE') != 'db':
+        @property
+        def cities(self):
+            """returns cities for current state"""
+            from models import storage
+
+            cities = []
+            for k, v in storage.all(City).items():
+                if self.id == v.__dict__['state_id']:
+                    cities.append(v)
+            return cities
