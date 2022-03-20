@@ -10,10 +10,12 @@ def hello_world():
     """returns hello HBNB!"""
     return 'Hello HBNB!'
 
+
 @app.route('/hbnb', strict_slashes=False)
 def hbhn_route():
     """returns HBNB"""
     return 'HBNB'
+
 
 @app.route('/c/<text>', strict_slashes=False)
 def c_text(text):
@@ -21,6 +23,7 @@ def c_text(text):
     ntext = escape(text).replace("_", " ")
     return 'c %s' % ntext
 
+
 if __name__ == "__main__":
     """app.debug = True"""
-    app.run(host = '0.0.0.0', port = 5000)
+    app.run(host='0.0.0.0', port=5000)
