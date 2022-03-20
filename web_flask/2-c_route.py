@@ -20,8 +20,8 @@ def hbhn_route():
 @app.route('/c/<text>', strict_slashes=False)
 def c_text(text):
     """Displays c <text>"""
-    ntext = text.replace("_", " ")
-    return 'c %s' % ntext
+    ntext = escape(text).replace("_", " ")
+    return 'c {}'.format(ntext)
 
 
 if __name__ == "__main__":
