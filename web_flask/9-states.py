@@ -14,23 +14,19 @@ app = Flask(__name__)
 
 
 @app.route('/states', strict_slashes=False)
-def states():
-    """Displays HTML template of all City"""
-    id = ""
-    return render_template('9-states.html', state_obj=id)
-
-
-@app.route('/states/', strict_slashes=False)
 @app.route('/states/<id>', strict_slashes=False)
 def cities_by_states(id=""):
     """Displays HTML template of all City with Given state"""
-    if id:
-        states = storage.all(State)
+    states = storage.all(State)
+    if id == "":
+        state_obj = states
+    else:
         if "State." + id in states.keys():
-            state_obj = states[id]
+            state_obj = states["State." + id]
         else:
-            id = ""
-    return render_template('9-states.html', state_obj=id, id=id)
+            state_obj = ""
+            id = "Not found!"
+    return render_template('9-states.html', state_obj=state_obj, id=id)
 
 
 @app.teardown_appcontext
