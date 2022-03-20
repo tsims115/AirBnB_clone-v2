@@ -21,7 +21,7 @@ def hbhn_route():
 def c_text(text):
     """Displays c <text>"""
     ntext = escape(text).replace("_", " ")
-    return 'c {}'.format(ntext)
+    return 'C %s' % ntext
 
 
 if __name__ == "__main__":
